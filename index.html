@@ -1,29 +1,438 @@
-platform-name">HackerRank</div>
-                </div>
-                <div class="platform-desc">Coding challenges • Skill-based hiring • Top tech companies</div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Internship Platforms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+        }
+
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .flashcard {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .flashcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #6c5ce7);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .platform-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo-container {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .internshala-logo {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .linkedin-logo {
+            background: #0077B5;
+            color: white;
+            border-radius: 8px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .wellfound-logo {
+            background: linear-gradient(135deg, #45b7d1, #2980b9);
+            color: white;
+            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .coding-logo {
+            background: linear-gradient(135deg, #f9ca24, #f39c12);
+            color: white;
+            border-radius: 8px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .portals-logo {
+            background: linear-gradient(135deg, #6c5ce7, #5b4cdb);
+            color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .best-for {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .features {
+            margin-bottom: 20px;
+        }
+
+        .features h4 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features h4::before {
+            content: '✨';
+            margin-right: 8px;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 8px 0;
+            color: #495057;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features li::before {
+            content: '•';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .website-link {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .website-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-1 { --accent: #ff6b6b; }
+        .card-2 { --accent: #4ecdc4; }
+        .card-3 { --accent: #45b7d1; }
+        .card-4 { --accent: #f9ca24; }
+        .card-5 { --accent: #6c5ce7; }
+
+        .card-1 .best-for { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+        .card-2 .best-for { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .card-3 .best-for { background: linear-gradient(135deg, #45b7d1, #2980b9); }
+        .card-4 .best-for { background: linear-gradient(135deg, #f9ca24, #f39c12); }
+        .card-5 .best-for { background: linear-gradient(135deg, #6c5ce7, #5b4cdb); }
+
+        .card-1 .website-link { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+        .card-2 .website-link { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .card-3 .website-link { background: linear-gradient(135deg, #45b7d1, #2980b9); }
+        .card-4 .website-link { background: linear-gradient(135deg, #f9ca24, #f39c12); }
+        .card-5 .website-link { background: linear-gradient(135deg, #6c5ce7, #5b4cdb); }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
             
-            <div class="platform">
-                <div class="platform-header">
-                    <div class="platform-icon">🌍</div>
-                    <div class="platform-name">Glassdoor/Indeed</div>
+            .flashcards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .flashcard {
+                padding: 20px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 40px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Top 5 Internship Platforms</h1>
+            <p>Your gateway to amazing career opportunities</p>
+        </div>
+
+        <div class="flashcards-grid">
+            <!-- Card 1: Internshala -->
+            <div class="flashcard card-1">
+                <div class="card-header">
+                    <span class="emoji">🌟</span>
+                    <h2 class="platform-name">Internshala</h2>
                 </div>
-                <div class="platform-desc">Company insights • Interview prep • Wide variety of sectors</div>
+                
+                <div class="logo-container">
+                    <div class="internshala-logo">I</div>
+                </div>
+                
+                <div class="best-for">
+                    Indian students looking for virtual or in-office internships
+                </div>
+                
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Verified internships</li>
+                        <li>Categories across tech, marketing, design, finance</li>
+                        <li>Free and paid training programs</li>
+                    </ul>
+                </div>
+                
+                <div class="website-link">
+                    internshala.com
+                </div>
+            </div>
+
+            <!-- Card 2: LinkedIn -->
+            <div class="flashcard card-2">
+                <div class="card-header">
+                    <span class="emoji">💼</span>
+                    <h2 class="platform-name">LinkedIn</h2>
+                </div>
+                
+                <div class="logo-container">
+                    <div class="linkedin-logo">in</div>
+                </div>
+                
+                <div class="best-for">
+                    Global internships and networking with recruiters
+                </div>
+                
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Powerful job filters (Internship, Remote)</li>
+                        <li>Company profiles & employee insights</li>
+                        <li>Direct apply option</li>
+                    </ul>
+                </div>
+                
+                <div class="website-link">
+                    linkedin.com/jobs
+                </div>
+            </div>
+
+            <!-- Card 3: Wellfound -->
+            <div class="flashcard card-3">
+                <div class="card-header">
+                    <span class="emoji">🌐</span>
+                    <h2 class="platform-name">Wellfound</h2>
+                </div>
+                
+                <div class="logo-container">
+                    <div class="wellfound-logo">🚀</div>
+                </div>
+                
+                <div class="best-for">
+                    Startups and tech internships (remote and in-office)
+                </div>
+                
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Direct contact with startup founders</li>
+                        <li>Salary and equity info upfront</li>
+                        <li>Startup-focused roles globally</li>
+                    </ul>
+                </div>
+                
+                <div class="website-link">
+                    wellfound.com
+                </div>
+            </div>
+
+            <!-- Card 4: Coding Platforms -->
+            <div class="flashcard card-4">
+                <div class="card-header">
+                    <span class="emoji">🚀</span>
+                    <h2 class="platform-name">Coding Platforms</h2>
+                </div>
+                
+                <div class="logo-container">
+                    <div class="coding-logo">&lt;/&gt;</div>
+                </div>
+                
+                <div class="best-for">
+                    Coding internships & product-based company hiring
+                </div>
+                
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Coding challenges by real companies</li>
+                        <li>Offers based on your score</li>
+                        <li>Links with Amazon, Infosys, Wipro, etc.</li>
+                    </ul>
+                </div>
+                
+                <div class="website-link">
+                    hackerrank.com | geeksforgeeks.org
+                </div>
+            </div>
+
+            <!-- Card 5: General Job Portals -->
+            <div class="flashcard card-5">
+                <div class="card-header">
+                    <span class="emoji">🌍</span>
+                    <h2 class="platform-name">Job Portals</h2>
+                </div>
+                
+                <div class="logo-container">
+                    <div class="portals-logo">🌐</div>
+                </div>
+                
+                <div class="best-for">
+                    Exploring all internship opportunities across sectors
+                </div>
+                
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Company reviews & interview questions</li>
+                        <li>Internship filters and alerts</li>
+                        <li>Wide range of sectors & companies</li>
+                    </ul>
+                </div>
+                
+                <div class="website-link">
+                    glassdoor.com | indeed.com | naukri.com
+                </div>
             </div>
         </div>
-        
+
         <div class="footer">
-            <div class="footer-text">Start Your Career Journey Today!</div>
-        </div>
-        
-        <div class="decorative-elements">
-            <div class="circle circle1"></div>
-            <div class="circle circle2"></div>
-            <div class="circle circle3"></div>
-            <div class="sparkle sparkle1"></div>
-            <div class="sparkle sparkle2"></div>
-            <div class="sparkle sparkle3"></div>
-            <div class="sparkle sparkle4"></div>
+            <p>💡 Pro Tip: Use multiple platforms to maximize your internship opportunities!</p>
         </div>
     </div>
 </body>
